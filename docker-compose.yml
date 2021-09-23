@@ -1,7 +1,7 @@
 version: '3'
 services:
   nginx:
-    container_name: nginx
+    container_name: test_nginx
     image: nginx:latest
     ports:
       - 8080:80
@@ -13,7 +13,7 @@ services:
       - php
 
   php:
-    container_name: php
+    container_name: test_php
     build: ./php
     volumes:
       - ./projects/:/var/www/html/
@@ -21,7 +21,7 @@ services:
       - db
 
   db:
-    container_name: mysql
+    container_name: test_mysql
     image: mysql:5.7
     ports:
       - 13306:3306
@@ -31,7 +31,7 @@ services:
       MYSQL_ROOT_PASSWORD: Raillink321;
 
   phpmyadmin:
-    container_name: phpmyadmin
+    container_name: test_phpmyadmin
     image: phpmyadmin/phpmyadmin:latest
     ports:
       - 9999:80
