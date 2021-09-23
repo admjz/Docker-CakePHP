@@ -1,0 +1,39 @@
+version: '3'
+services:
+  nginx:
+    container_name: nginx
+    image: nginx:latest
+    ports:
+      - 8080:80
+      - 8081:81
+    volumes:
+      - ./nginx/:/etc/nginx/conf.d/
+      - ./projects/:/var/www/html/
+    depends_on:
+      - php
+
+  php:
+    container_name: php
+    build: ./php
+    volumes:
+      - ./projects/:/var/www/html/
+    depends_on:
+      - db
+
+  db:
+    container_name: mysql
+    image: mysql:5.7
+    ports:
+      - 13306:3306
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: Raillink321;
+
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - 9999:80
+    depends_on:
+      - db
