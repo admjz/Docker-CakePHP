@@ -5,9 +5,42 @@
 + *projectsディレクトリ*配下に追加する案件を配置
 + *docker-compose.yml*のnginxのところでポートを指定
 + *nginxディレクトリ*下にconfファイルを作成(listenはdocker-composeで指定したポート番号を記載)
-
+***
 ### Dockerに設定を反映
 
 ```
-docker-compose up -d
+# docker-compose up -d
 ```
+***
+### コンテナにcomposerをインストール
++ phpコンテナに入ってcomposer 公式ドキュメントにあるコマンドで composer.phar をインストール
+
+```
+# docker-compose exec -it php /bin/bash
+```
+> [composer公式ドキュメント](https://getcomposer.org/download/)
+
+```
+# cd /var/www
+
+【注意】下記４つのコマンドはコピペせず composer 公式ドキュメントにあるコードを使用
+
+# php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+
+# php -r "if (hash_file('sha384', 'composer-setup.php') === '756890a4488ce9024fc62c56153228907f1545c228516cbf63f885e036d37e9a59d27d63f46af1d4d07ee0f76181c7d3') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+
+# php composer-setup.php
+
+# php -r "unlink('composer-setup.php');"
+
+```
+***
+### phpコンテナ内にcakephpをインストール
++ phpコンテナに入ってcakephpをインストール<br>
+  ※ cakephpのバージョンは使用環境に応じて変更
+```
+# php composer.phar create-project --prefer-dist cakephp/app:3.9 html
+
+# mv composer.phar html
+```
++ app.phpのDatasourcesを使用環境に応じて編集
