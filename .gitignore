@@ -1,10 +1,17 @@
 mysql/data/*
-projects/*
+projects/.github/*
+projects/.editorconfig
+projects/.gitattributes
+projects/.gitignore
+projects/.htaccess
+projects/.travis.yml
+projects/webroot/.htaccess
 
 # CakePHP 3
 
-/vendor/*
-/config/app.php
+projects/vendor/*
+projects/config/app.php
+projects/config/.env.example
 
 /tmp/cache/models/*
 !/tmp/cache/models/empty
