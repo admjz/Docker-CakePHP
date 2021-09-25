@@ -1,3 +1,6 @@
+mysql/data/*
+projects/*
+
 # CakePHP 3
 
 /vendor/*
