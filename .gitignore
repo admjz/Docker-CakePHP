@@ -1,5 +1,5 @@
-mysql/data/*
-projects/*
+# mysql/data/*
+# projects/*
 
 # CakePHP 3
 
