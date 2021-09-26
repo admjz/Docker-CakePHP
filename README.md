@@ -1,6 +1,11 @@
 # Docker-cakephp
 
 ## 最初に行う設定
++ mysql/dataディレクトリを作成
+```
+mkdir mysql && mkdir mysql/data
+```
+
 + コンテナを起動・生成
 ```
 docker-compose up -d
