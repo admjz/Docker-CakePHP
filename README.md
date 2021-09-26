@@ -1,17 +1,10 @@
 # Docker-cakephp
 
-## 新規で案件を追加する場合
-### ファイルを追加・編集
-+ *projectsディレクトリ*配下に追加する案件を配置
-+ *docker-compose.yml*のnginxのところでポートを指定
-+ *nginxディレクトリ*下にconfファイルを作成(listenはdocker-composeで指定したポート番号を記載)
-***
-### Dockerに設定を反映
-
+## 最初に行う設定
++ コンテナを起動・生成
 ```
 docker-compose up -d
 ```
-***
 ### コンテナにcomposerをインストール
 + phpコンテナに入ってcomposer 公式ドキュメントにあるコマンドで composer.phar をインストール
 
@@ -50,3 +43,15 @@ php composer.phar create-project --prefer-dist cakephp/app:3.9 html
 mv composer.phar html
 ```
 + app.phpのDatasourcesを使用環境に応じて編集、ローカル環境の表示環境を設定
+
+## 新規で案件を追加する場合
+### ファイルを追加・編集
++ *projectsディレクトリ*配下に追加する案件を配置
++ *docker-compose.yml*のnginxのところでポートを指定
++ *nginxディレクトリ*下にconfファイルを作成(listenはdocker-composeで指定したポート番号を記載)
+***
+### Dockerに設定を反映
+
+```
+docker-compose up -d
+```
