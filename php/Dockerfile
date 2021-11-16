@@ -8,3 +8,7 @@ RUN apt-get update && \
   docker-php-ext-install pdo_mysql &&\
   curl -sS https://getcomposer.org/installer | php &&\
   mv composer.phar /usr/local/bin/composer
+RUN mv /bin/sh /bin/sh_tmp && ln -s /bin/bash /bin/sh
+RUN echo "alias ll='ls -la'" >> ~/.bashrc
+RUN source ~/.bashrc
+RUN rm /bin/sh && mv /bin/sh_tmp /bin/sh
